@@ -1,7 +1,7 @@
 # RAG-SVA-Helper
 Please note that this is just me playing around and is very much a work in progress with minimal features.
 I used the open source dataset VERT which containts verilog code along with SVA's for my vector store. I've only done minimal processing and I'm sure with slightly more nuanced cleaning, retrieval from the vector store will yield much more useful results. 
-This project provides a workflow for generating SystemVerilog Assertions (SVA) from natural language requirements using Retrieval-Augmented Generation (RAG) and large language models (LLMs). It leverages the LangChain framework, OpenAI models, and Chroma vector store for efficient retrieval and generation. 
+Uses a few-shot prompting with explicit SVA rules for better assertion generation. 
 
 ## Features
 - Loads requirements and code examples from a JSONL file.
