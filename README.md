@@ -31,6 +31,7 @@ resp = generate_sva(
 display_sva(resp)
 ```
 ### Example Output (Not great but getting there)
+
 ------------------------------------------------------------
 ASSERTION
 ------------------------------------------------------------
@@ -39,7 +40,7 @@ property data_stability; @(posedge clk) disable iff (!rst_n) (valid && !ready) |
 ------------------------------------------------------------
 ANTI-VACUITY COVER
 ------------------------------------------------------------
-cover property (valid && !ready |-> (##[1:$] ready));
+cover property ( @(posedge clk) disable iff (!rst_n) (valid && !ready) |-> (ready ##1 $stable(data)); )
 
 ------------------------------------------------------------
 NOTES
