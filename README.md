@@ -30,19 +30,21 @@ resp = generate_sva(
 )
 display_sva(resp)
 ```
-### Example Output (Not great but getting there)
+## Example Output (Not great but getting there)
 
 ------------------------------------------------------------
 ASSERTION
 ------------------------------------------------------------
-property data_stability; @(posedge clk) disable iff (!rst_n) (valid && !ready) |-> $stable(data); assert property (data_stability);
+property data_stable_until_ready; @(posedge clk) disable iff (!rst_n) (valid && !ready) |-> $stable(data) until_with (ready); assert property (data_stable_until_ready);
 
 ------------------------------------------------------------
 ANTI-VACUITY COVER
 ------------------------------------------------------------
-cover property ( @(posedge clk) disable iff (!rst_n) (valid && !ready) |-> (ready ##1 $stable(data)); )
+cover property (@(posedge clk) disable iff (!rst_n) (valid && !ready) ##[1:$] ready);
 
 ------------------------------------------------------------
 NOTES
 ------------------------------------------------------------
-This assertion ensures that when valid is high and ready is low, the data remains stable until ready goes high.
+- Overlapped |-> starts stability on the first stall cycle.
+- until_with includes the release (READY) cycle.
+
