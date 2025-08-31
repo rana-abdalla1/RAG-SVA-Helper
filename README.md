@@ -4,11 +4,10 @@ I used the open source dataset VERT which containts verilog code along with SVA'
 Uses a few-shot prompting with explicit SVA rules for better assertion generation. 
 
 ## Features
-- Loads requirements and code examples from a JSONL file.
+- Loads assertions and code examples from a JSON file.
 - Embeds and stores documents using OpenAI embeddings and Chroma.
 - Retrieves relevant exemplars for a given requirement.
 - Uses a prompt template and LLM to generate strict SVA and anti-vacuity cover properties.
-- Pretty-prints the generated assertions and notes.
 
 ## Requirements
 - Python 3.8+
@@ -49,4 +48,20 @@ NOTES
 - until_with includes the release (READY) cycle.
 
 
-### Additional examples from 
+## Next Steps
+
+### 1. Improve RAG Pipeline
+- **Better data cleaning**: Parse and normalize VERT dataset more carefully
+- **Semantic chunking**: Split documents by SVA patterns
+- **Query enhancement**
+
+### 2. Fine-tune Open Source Model
+- **Model selection**: Experiment with different open source models from HuggingFace
+- **Training data**: Format VERT dataset for instruction tuning (requirement → SVA pairs)
+- **HuggingFace setup**: Use Transformers library for efficient fine-tuning
+- **Training pipeline**: Implement supervised fine-tuning on SystemVerilog assertion generation
+
+### 3. Comparative Analysis
+- **Quality assessment**: Compare RAG vs fine-tuned model on syntax correctness and logic validity
+- **Performance benchmarks**: Generation speed, consistency, edge case handling
+
