@@ -35,7 +35,7 @@ display_sva(resp)
 ------------------------------------------------------------
 ASSERTION
 ------------------------------------------------------------
-property data_stable_until_ready; @(posedge clk) disable iff (!rst_n) (valid && !ready) |-> $stable(data) until_with (ready); assert property (data_stable_until_ready);
+property data_stable_until_ready; @(posedge clk) disable iff (!rst_n) (valid && !ready) |-> $stable(data) until_with (ready); endproperty assert property (data_stable_until_ready);
 
 ------------------------------------------------------------
 ANTI-VACUITY COVER
@@ -48,3 +48,5 @@ NOTES
 - Overlapped |-> starts stability on the first stall cycle.
 - until_with includes the release (READY) cycle.
 
+
+### Additional examples from 
