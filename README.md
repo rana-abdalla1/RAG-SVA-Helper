@@ -1,4 +1,4 @@
-# RAG-SVA-Helper
+# RAG SystemVerilog Assertion Generator based on GPT-4o-mini
 Please note that this is just me playing around and is very much a work in progress with minimal features.
 I used the open source dataset VERT which containts verilog code along with SVA's for my vector store. I've only done minimal processing and I'm sure with slightly more nuanced cleaning, retrieval from the vector store will yield much more useful results. 
 Uses a few-shot prompting with explicit SVA rules for better assertion generation. 
